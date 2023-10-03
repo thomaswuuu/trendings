@@ -1,0 +1,75 @@
+<% layout("layout/layout") %>
+<script>
+  const rankedData = [];
+  const recentData = [];
+  <% rankedKeyword.forEach((e,index) => { %>
+    rankedData.push({index:'<%= index+1 %>',query:'<%= e.query%>'});
+  <% }); %>
+  <% recentKeyword.forEach((e,index) => { %>
+    recentData.push({index:'<%= index+1 %>',query:'<%= e.query%>'});
+  <% }); %>
+</script>
+<div id="results" style="display: flex; flex-wrap: wrap">
+  <div class="searches">
+    <h3>熱門相關搜尋</h3>
+    <div class="list" id="listRanked">
+      <% rankedKeyword.forEach((e,index)=>{ %> <% if(index < 5){ %>
+      <div>
+        <span class="rank"><%= index+1 %></span>
+        <a
+          href="https://www.google.com/search?q=<%= e.query %>"
+          target="_blank"
+        >
+          <span><%= e.query %></span>
+        </a>
+      </div>
+      <% } %> <% }); %>
+    </div>
+    <div class="pagination">
+      <span
+        class="pre"
+        onclick="previous('#listRanked','#pageRanked',rankedData)"
+        >&laquo;</span
+      >
+      <% length = rankedKeyword.length;currentPage = (length>0)?1:0;totalPage =
+      parseInt(length/5) + (length%5>0?1:0) %>
+      <span id="pageRanked" data-page="1"
+        ><%=currentPage%> / <%= totalPage %></span
+      >
+      <span class="next" onclick="next('#listRanked','#pageRanked',rankedData)"
+        >&raquo;</span
+      >
+    </div>
+  </div>
+  <div class="searches">
+    <h3>近期相關搜尋</h3>
+    <div class="list" id="listRecent">
+      <% recentKeyword.forEach((e,index)=>{ %> <% if(index < 5){ %>
+      <div>
+        <span class="rank"><%= index+1 %></span>
+        <a
+          href="https://www.google.com/search?q=<%= e.query %>"
+          target="_blank"
+        >
+          <span><%= e.query %></span>
+        </a>
+      </div>
+      <% } %> <% }); %>
+    </div>
+    <div class="pagination">
+      <span
+        class="pre"
+        onclick="previous('#listRecent','#pageRecent',recentData)"
+        >&laquo;</span
+      >
+      <% length = recentKeyword.length;currentPage = (length>0)?1:0; totalPage =
+      parseInt(length/5) + (length%5>0?1:0) %>
+      <span id="pageRecent" data-page="1"
+        ><%=currentPage%> / <%= totalPage %></span
+      >
+      <span class="next" onclick="next('#listRecent','#pageRecent',recentData)"
+        >&raquo;</span
+      >
+    </div>
+  </div>
+</div>

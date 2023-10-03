@@ -1,0 +1,50 @@
+<% layout("layout/layout") %>
+<div id="results">
+  <h3 class="flex">
+    <label for="date">熱門搜尋排行:</label>
+    <input type="date" id="date" value="<%= selectedDate %>" />
+  </h3>
+  <div id="content">
+    <% if(data.length == 0) { %>
+    <h3
+      class="items"
+      style="cursor: initial; border: 1px solid #dadada; border-radius: 15px"
+    >
+      <% date = new Date();date = date.setHours(date.getHours()+8); %> <% cDate
+      = new Date(date); %> <% sDate = new Date(selectedDate) %> <%
+      if(cDate.toISOString().slice(0,10) == selectedDate) { %> 本日目前尚無資料
+      <% } else if(cDate.getTime() < sDate.getTime()) { %> 無法取得未來資料 <% }
+      else { %> 此日期查無資料(資料僅保留近1個月內) <% } %>
+    </h3>
+    <% } else { %> <% data.forEach((item) => { %>
+    <div
+      class="items flex collapsed"
+      data-toggle="collapse"
+      data-target="#r<%= item.index %>"
+    >
+      <span class="rank"><%= item.index %></span>
+      <h4><%= item.query %></h4>
+      <h4><%= item.traffic %> &ensp;筆搜尋</h4>
+      <img class="arrow" src="../images/down-chevron.png" style="width: 15px" />
+    </div>
+    <div id="r<%= item.index %>" class="news collapse">
+      <img src="<%= item.image %>" />
+      <h5>相關新聞</h5>
+      <table>
+        <% item.articles.forEach( (article) => { %>
+        <tr>
+          <td><%= article.source%>:</td>
+          <td>
+            <a href="<%= article.url %>" target="_blank"
+              ><%= article.title %></a
+            >
+          </td>
+        </tr>
+        <% }); %>
+      </table>
+    </div>
+    <% });%> <% } %>
+    <p><a href="#results">back to top</a></p>
+  </div>
+</div>
+<script type="text/javascript" src="../javascripts/trends.js"></script>
