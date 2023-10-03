@@ -28,8 +28,9 @@ function previous(listId, pageId, data) {
   let currentPage = parseInt(page.dataset.page) - 1;
   if (currentPage != 0) {
     let numberPage = 5;
-    let remainder = data.length % numberPage;
-    let totalPage = parseInt(data.length / numberPage);
+    let length = data.length;
+    let remainder = length % numberPage;
+    let totalPage = parseInt(length / numberPage);
     if (remainder > 0) totalPage++;
     let initialIndex = (currentPage - 1) * numberPage;
     let limit = currentPage * numberPage;
@@ -48,14 +49,16 @@ function next(listId, pageId, data) {
   let page = document.querySelector(pageId);
   let currentPage = parseInt(page.dataset.page) + 1;
   let numberPage = 5;
-  let remainder = data.length % numberPage;
-  let totalPage = parseInt(data.length / numberPage);
+  let length = data.length;
+  let remainder = length % numberPage;
+  let totalPage = parseInt(length / numberPage);
+
   if (remainder > 0) totalPage++;
   if (currentPage <= totalPage) {
     let initialIndex = (currentPage - 1) * numberPage;
     let limit = currentPage * numberPage;
     let content = "";
-    for (let i = initialIndex; i < limit; i++) {
+    for (let i = initialIndex; i < limit && i < length; i++) {
       content += `<div><span class="rank">${data[i].index}</span><a href="https://www.google.com/search?q=${data[i].query}" target="_blank">
       <span>${data[i].query}</span></a></div>`;
     }
