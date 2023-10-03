@@ -29,7 +29,7 @@ function previous(listId, pageId, data) {
   if (currentPage != 0) {
     let numberPage = 5;
     let remainder = data.length % numberPage;
-    let totalPage = data.length / numberPage;
+    let totalPage = parseInt(data.length / numberPage);
     if (remainder > 0) totalPage++;
     let initialIndex = (currentPage - 1) * numberPage;
     let limit = currentPage * numberPage;
@@ -49,7 +49,7 @@ function next(listId, pageId, data) {
   let currentPage = parseInt(page.dataset.page) + 1;
   let numberPage = 5;
   let remainder = data.length % numberPage;
-  let totalPage = data.length / numberPage;
+  let totalPage = parseInt(data.length / numberPage);
   if (remainder > 0) totalPage++;
   if (currentPage <= totalPage) {
     let initialIndex = (currentPage - 1) * numberPage;
@@ -64,50 +64,6 @@ function next(listId, pageId, data) {
     page.innerHTML = `${currentPage}  /  ${totalPage}`;
   }
 }
-
-// preRanked.addEventListener("click", (e) => {
-//   let list = document.querySelector("#listRanked");
-//   let page = document.querySelector("#pageRanked");
-//   let currentPage = parseInt(page.dataset.page) - 1;
-//   if (currentPage != 0) {
-//     let numberPage = 5;
-//     let remainder = data.length % numberPage;
-//     let totalPage = data.length / numberPage;
-//     if (remainder > 0) totalPage++;
-//     let initialIndex = (currentPage - 1) * numberPage;
-//     let limit = currentPage * numberPage;
-//     let content = "";
-//     for (let i = initialIndex; i < limit; i++) {
-//       content += `<div><span class="rank">${rankedData[i].index}</span><a href="https://www.google.com/search?q=${rankedData[i].query}" target="_blank">
-//       <span>${rankedData[i].query}</span></a></div>`;
-//     }
-//     list.innerHTML = content;
-//     page.dataset.page = currentPage;
-//     page.innerHTML = `${currentPage}  /  ${totalPage}`;
-//   }
-// });
-
-// nextRanked.addEventListener("click", (e) => {
-//   let list = document.querySelector("#listRanked");
-//   let page = document.querySelector("#pageRanked");
-//   let currentPage = parseInt(page.dataset.page) + 1;
-//   let numberPage = 5;
-//   let remainder = data.length % numberPage;
-//   let totalPage = data.length / numberPage;
-//   if (remainder > 0) totalPage++;
-//   if (currentPage <= totalPage) {
-//     let initialIndex = (currentPage - 1) * numberPage;
-//     let limit = currentPage * numberPage;
-//     let content = "";
-//     for (let i = initialIndex; i < limit; i++) {
-//       content += `<div><span class="rank">${rankedData[i].index}</span><a href="https://www.google.com/search?q=${rankedData[i].query}" target="_blank">
-//       <span>${rankedData[i].query}</span></a></div>`;
-//     }
-//     list.innerHTML = content;
-//     page.dataset.page = currentPage;
-//     page.innerHTML = `${currentPage}  /  ${totalPage}`;
-//   }
-// });
 
 // Header scroll down to hide
 let prevScrollpos = $(window).scrollTop();
