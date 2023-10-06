@@ -50,7 +50,6 @@ function getRelatedQueries(res, keyword, geoLocation = "TW") {
       startTime: new Date(start),
     })
     .then((results) => {
-      console.log(results);
       let rankedList = JSON.parse(results).default.rankedList;
       let rankedKeyword = rankedList[0].rankedKeyword;
       let recentKeyword = rankedList[1].rankedKeyword;
