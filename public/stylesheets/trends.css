@@ -17,7 +17,7 @@ header {
 }
 
 main {
-  max-width: 900px;
+  max-width: 1024px;
   margin: 8rem auto 4rem auto;
 }
 
@@ -103,6 +103,10 @@ main div p {
   font-size: 2rem;
   text-align: center;
   margin: 1.5rem;
+}
+main .results {
+  max-width: 900px;
+  margin: 0 auto;
 }
 main .items {
   border-top: 1px solid #dadada;

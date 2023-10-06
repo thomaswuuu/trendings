@@ -1,18 +1,28 @@
 <% layout("layout/layout") %>
 <script>
-  const rankedData = [];
-  const recentData = [];
+  // Keywords
+  rankedKeyword = [];
+  recentKeyword = [];
   <% rankedKeyword.forEach((e,index) => { %>
-    rankedData.push({index:'<%= index+1 %>',query:'<%= e.query%>'});
+    rankedKeyword.push({index:'<%= index+1 %>',query:'<%= e.query%>'});
   <% }); %>
   <% recentKeyword.forEach((e,index) => { %>
-    recentData.push({index:'<%= index+1 %>',query:'<%= e.query%>'});
+    recentKeyword.push({index:'<%= index+1 %>',query:'<%= e.query%>'});
+  <% }); %>
+  // Topics
+  rankedTopic = [];
+  recentTopic = [];
+  <% rankedTopic.forEach((e,index) => { %>
+    rankedTopic.push({index:'<%= index+1 %>',query:'<%= e.topic.title %> - <%= e.topic.type %>'});
+  <% }); %>
+  <% recentTopic.forEach((e,index) => { %>
+    recentTopic.push({index:'<%= index+1 %>',query:'<%= e.topic.title %> - <%= e.topic.type %>'});
   <% }); %>
 </script>
 <div id="results" style="display: flex; flex-wrap: wrap">
   <div class="searches">
     <h3>熱門相關搜尋</h3>
-    <div class="list" id="listRanked">
+    <div class="list" id="rankedKeyword">
       <% rankedKeyword.forEach((e,index)=>{ %> <% if(index < 5){ %>
       <div>
         <span class="rank"><%= index+1 %></span>
@@ -28,22 +38,24 @@
     <div class="pagination">
       <span
         class="pre"
-        onclick="previous('#listRanked','#pageRanked',rankedData)"
+        onclick="previous('#rankedKeyword','#pageRankedKeyword',rankedKeyword)"
         >&laquo;</span
       >
       <% length = rankedKeyword.length;currentPage = (length>0)?1:0;totalPage =
       parseInt(length/5) + (length%5>0?1:0) %>
-      <span id="pageRanked" data-page="1"
+      <span id="pageRankedKeyword" data-page="1"
         ><%=currentPage%> / <%= totalPage %></span
       >
-      <span class="next" onclick="next('#listRanked','#pageRanked',rankedData)"
+      <span
+        class="next"
+        onclick="next('#rankedKeyword','#pageRankedKeyword',rankedKeyword)"
         >&raquo;</span
       >
     </div>
   </div>
   <div class="searches">
     <h3>近期竄升搜尋</h3>
-    <div class="list" id="listRecent">
+    <div class="list" id="recentKeyword">
       <% recentKeyword.forEach((e,index)=>{ %> <% if(index < 5){ %>
       <div>
         <span class="rank"><%= index+1 %></span>
@@ -59,17 +71,88 @@
     <div class="pagination">
       <span
         class="pre"
-        onclick="previous('#listRecent','#pageRecent',recentData)"
+        onclick="previous('#recentKeyword','#pageRecentKeyword',recentKeyword)"
         >&laquo;</span
       >
       <% length = recentKeyword.length;currentPage = (length>0)?1:0; totalPage =
       parseInt(length/5) + (length%5>0?1:0) %>
-      <span id="pageRecent" data-page="1"
+      <span id="pageRecentKeyword" data-page="1"
         ><%=currentPage%> / <%= totalPage %></span
       >
-      <span class="next" onclick="next('#listRecent','#pageRecent',recentData)"
+      <span
+        class="next"
+        onclick="next('#recentKeyword','#pageRecentKeyword',recentKeyword)"
         >&raquo;</span
       >
     </div>
   </div>
+  <div class="searches">
+    <h3>熱門相關主題</h3>
+    <div class="list" id="rankedTopic">
+      <% rankedTopic.forEach((e,index)=>{ %> <% if(index < 5){ %>
+      <div>
+        <span class="rank"><%= index+1 %></span>
+        <a
+          href="https://www.google.com/search?q=<%= e.topic.title %> - <%= e.topic.type %>"
+          target="_blank"
+        >
+          <span><%= e.topic.title %> - <%= e.topic.type %></span>
+        </a>
+      </div>
+      <% } %> <% }); %>
+    </div>
+    <div class="pagination">
+      <span
+        class="pre"
+        onclick="previous('#rankedTopic','#pageRankedTopic',rankedTopic)"
+        >&laquo;</span
+      >
+      <% length = rankedTopic.length;currentPage = (length>0)?1:0;totalPage =
+      parseInt(length/5) + (length%5>0?1:0) %>
+      <span id="pageRankedTopic" data-page="1"
+        ><%=currentPage%> / <%= totalPage %></span
+      >
+      <span
+        class="next"
+        onclick="next('#rankedTopic','#pageRankedTopic',rankedTopic)"
+        >&raquo;</span
+      >
+    </div>
+  </div>
+  <div class="searches">
+    <h3>近期竄升主題</h3>
+    <div class="list" id="recentTopic">
+      <% recentTopic.forEach((e,index)=>{ %> <% if(index < 5){ %>
+      <div>
+        <span class="rank"><%= index+1 %></span>
+        <a
+          href="https://www.google.com/search?q=<%= e.topic.title %> - <%= e.topic.type %>"
+          target="_blank"
+        >
+          <span><%= e.topic.title %> - <%= e.topic.type %></span>
+        </a>
+      </div>
+      <% } %> <% }); %>
+    </div>
+    <div class="pagination">
+      <span
+        class="pre"
+        onclick="previous('#recentTopic','#pageRecentTopic',recentTopic)"
+        >&laquo;</span
+      >
+      <% length = recentTopic.length;currentPage = (length>0)?1:0; totalPage =
+      parseInt(length/5) + (length%5>0?1:0) %>
+      <span id="pageRecentTopic" data-page="1"
+        ><%=currentPage%> / <%= totalPage %></span
+      >
+      <span
+        class="next"
+        onclick="next('#recentTopic','#pageRecentTopic',recentTopic)"
+        >&raquo;</span
+      >
+    </div>
+  </div>
+</div>
+<div>
+  <p><a href="#results">back to top</a></p>
 </div>

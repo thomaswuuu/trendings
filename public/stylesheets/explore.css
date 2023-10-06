@@ -3,13 +3,14 @@ main .searches {
   border: 1px solid #dadada;
   border-radius: 15px;
   padding: 1rem 2rem;
-  width: 400px;
+  width: 100%;
+  max-width: 500px;
   height: 100%;
-  max-height: 100vh;
+  max-height: 45vh;
   margin: 2vh auto;
 }
 main .searches h3 {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 main .searches .rank {
   font-size: 2.5rem;
@@ -22,7 +23,7 @@ main .searches .list div {
   width: 100%;
 }
 main .searches .list div span {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-right: 2rem;
 }
 
