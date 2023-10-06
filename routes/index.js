@@ -11,7 +11,7 @@ function getDailyTrend(res, selectedDate, geoLocation = "TW") {
       geo: geoLocation,
     })
     .then((results) => {
-      if (results.length > 0) {
+      if (results.length > 0 && results.includes("default")) {
         const jsonObj = JSON.parse(results);
 
         trendingSearchesDays = jsonObj.default.trendingSearchesDays;
@@ -45,13 +45,15 @@ function getDailyTrend(res, selectedDate, geoLocation = "TW") {
             });
           }
         });
+        res.render("index", {
+          regions: regions,
+          data: data,
+          geoLocation: geoLocation,
+          selectedDate: selectedDate,
+        });
+      } else {
+        console.log(results);
       }
-      res.render("index", {
-        regions: regions,
-        data: data,
-        geoLocation: geoLocation,
-        selectedDate: selectedDate,
-      });
     })
     .catch((err) => {
       console.log(err);
