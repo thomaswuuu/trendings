@@ -23,7 +23,12 @@
   <div class="searches">
     <h3>熱門相關搜尋</h3>
     <div class="list" id="rankedKeyword">
-      <% rankedKeyword.forEach((e,index)=>{ %> <% if(index < 5){ %>
+      <% if(rankedKeyword.length == 0) { %>
+      <div>
+        抱歉，您的搜尋資料不足，因此無法在此顯示。
+        請確定沒有錯別字，或者嘗試使用較常見的字詞。
+      </div>
+      <% } else { rankedKeyword.forEach((e,index)=>{ %> <% if(index < 5){ %>
       <div>
         <span class="rank"><%= index+1 %></span>
         <a
@@ -33,7 +38,7 @@
           <span><%= e.query %></span>
         </a>
       </div>
-      <% } %> <% }); %>
+      <% } %> <% }); }%>
     </div>
     <div class="pagination">
       <span
@@ -56,7 +61,12 @@
   <div class="searches">
     <h3>近期竄升搜尋</h3>
     <div class="list" id="recentKeyword">
-      <% recentKeyword.forEach((e,index)=>{ %> <% if(index < 5){ %>
+      <% if(rankedKeyword.length == 0) { %>
+      <div>
+        抱歉，您的搜尋資料不足，因此無法在此顯示。
+        請確定沒有錯別字，或者嘗試使用較常見的字詞。
+      </div>
+      <% } else { recentKeyword.forEach((e,index)=>{ %> <% if(index < 5){ %>
       <div>
         <span class="rank"><%= index+1 %></span>
         <a
@@ -66,7 +76,7 @@
           <span><%= e.query %></span>
         </a>
       </div>
-      <% } %> <% }); %>
+      <% } %> <% }); }%>
     </div>
     <div class="pagination">
       <span
@@ -89,7 +99,12 @@
   <div class="searches">
     <h3>熱門相關主題</h3>
     <div class="list" id="rankedTopic">
-      <% rankedTopic.forEach((e,index)=>{ %> <% if(index < 5){ %>
+      <% if(rankedKeyword.length == 0) { %>
+      <div>
+        抱歉，您的搜尋資料不足，因此無法在此顯示。
+        請確定沒有錯別字，或者嘗試使用較常見的字詞。
+      </div>
+      <% } else { rankedTopic.forEach((e,index)=>{ %> <% if(index < 5){ %>
       <div>
         <span class="rank"><%= index+1 %></span>
         <a
@@ -99,7 +114,7 @@
           <span><%= e.topic.title %> - <%= e.topic.type %></span>
         </a>
       </div>
-      <% } %> <% }); %>
+      <% } %> <% }); } %>
     </div>
     <div class="pagination">
       <span
@@ -122,7 +137,12 @@
   <div class="searches">
     <h3>近期竄升主題</h3>
     <div class="list" id="recentTopic">
-      <% recentTopic.forEach((e,index)=>{ %> <% if(index < 5){ %>
+      <% if(rankedKeyword.length == 0) { %>
+      <div>
+        抱歉，您的搜尋資料不足，因此無法在此顯示。
+        請確定沒有錯別字，或者嘗試使用較常見的字詞。
+      </div>
+      <% } else { recentTopic.forEach((e,index)=>{ %> <% if(index < 5){ %>
       <div>
         <span class="rank"><%= index+1 %></span>
         <a
@@ -132,7 +152,7 @@
           <span><%= e.topic.title %> - <%= e.topic.type %></span>
         </a>
       </div>
-      <% } %> <% }); %>
+      <% } %> <% }); } %>
     </div>
     <div class="pagination">
       <span
@@ -154,5 +174,5 @@
   </div>
 </div>
 <div>
-  <p><a href="#results">back to top</a></p>
+  <p><a href="/trends">back to home</a></p>
 </div>

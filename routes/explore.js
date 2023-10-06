@@ -33,6 +33,15 @@ function getRelatedTopics(
         });
       } else {
         console.log(results);
+        res.render("explore", {
+          regions: regions,
+          query: keyword,
+          geoLocation: geoLocation,
+          rankedKeyword: [],
+          recentKeyword: [],
+          rankedTopic: [],
+          recentTopic: [],
+        });
       }
     })
     .catch((err) => {
@@ -52,15 +61,33 @@ function getRelatedQueries(res, keyword, geoLocation = "TW") {
       geo: geoLocation,
       startTime: new Date(start),
     })
-    .then((results) => {
+    .then(async (results) => {
       if (results.length > 0 && results.includes("default")) {
         let rankedList = JSON.parse(results).default.rankedList;
         let rankedKeyword = rankedList[0].rankedKeyword;
         let recentKeyword = rankedList[1].rankedKeyword;
-        let relatedKeywords = [rankedKeyword, recentKeyword];
+        let relatedKeywords = [];
+        if (rankedKeyword.length && recentKeyword.length) {
+          relatedKeywords = [rankedKeyword, recentKeyword];
+        } else if (rankedKeyword.length && !recentKeyword.length) {
+          relatedKeywords = [rankedKeyword, []];
+        } else if (!rankedKeyword.length && recentKeyword.length) {
+          relatedKeywords = [[], recentKeyword];
+        }
+        // call related topics after 2 seconds
+        await new Promise((r) => setTimeout(r, 2000));
         getRelatedTopics(res, keyword, relatedKeywords, geoLocation, start);
       } else {
         console.log(results);
+        res.render("explore", {
+          regions: regions,
+          query: keyword,
+          geoLocation: geoLocation,
+          rankedKeyword: [],
+          recentKeyword: [],
+          rankedTopic: [],
+          recentTopic: [],
+        });
       }
     })
     .catch((err) => {

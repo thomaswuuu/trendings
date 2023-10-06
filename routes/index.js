@@ -47,12 +47,18 @@ function getDailyTrend(res, selectedDate, geoLocation = "TW") {
         });
         res.render("index", {
           regions: regions,
-          data: data,
           geoLocation: geoLocation,
           selectedDate: selectedDate,
+          data: data,
         });
       } else {
         console.log(results);
+        res.render("index", {
+          regions: regions,
+          geoLocation: geoLocation,
+          selectedDate: selectedDate,
+          data: [],
+        });
       }
     })
     .catch((err) => {
