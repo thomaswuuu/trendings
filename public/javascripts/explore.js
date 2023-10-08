@@ -72,7 +72,7 @@ function next(listId, pageId, data) {
 let prevScrollpos = $(window).scrollTop();
 $(window).scroll((e) => {
   let currentScrollPos = $(window).scrollTop();
-  if (prevScrollpos >= currentScrollPos) {
+  if (prevScrollpos >= currentScrollPos || currentScrollPos <= 20) {
     $(".header").css("top", "0");
   } else {
     $(".header").css("top", "-20vh");
