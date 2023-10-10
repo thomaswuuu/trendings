@@ -88,6 +88,7 @@ router.get("/", async (req, res) => {
 router.get("/:date", async (req, res) => {
   let fullDate = req.params.date;
   let geoLocation = req.query.geo;
+  let trendData = [];
 
   try {
     if (!Boolean(geoLocation)) geoLocation = "TW";

@@ -82,12 +82,13 @@ router.get("/", async (req, res) => {
   let start = new Date();
   start = new Date(start.setFullYear(start.getFullYear() - 1));
   start = start.toISOString().slice(0, 10); // Set yyyy-mm-dd format;
-  // Get relatedQueries and relatedTopics data
+  let relatedKeywords = [];
+  let relatedTopics = [];
+
   try {
-    let [relatedKeywords, relatedTopics] = await Promise.all([
-      getRelatedQueries(keyword, geoLocation, start),
-      getRelatedTopics(keyword, geoLocation, start),
-    ]);
+    relatedKeywords = await getRelatedQueries(keyword, geoLocation, start);
+    await new Promise((r) => setTimeout(r, 2000)); // call related topics after 2 seconds
+    relatedTopics = await getRelatedTopics(keyword, geoLocation, start);
 
     res.render("explore", {
       regions: regions,
