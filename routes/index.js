@@ -46,9 +46,9 @@ function getDailyTrend(selectedDate, geoLocation) {
                   articles: articles,
                 });
               });
-              resolve(data);
             }
           });
+          resolve(data);
         } else {
           console.log(results);
           resolve(data);
