@@ -197,4 +197,8 @@ const regions = [
   },
 ];
 
-module.exports = regions;
+function getRegions() {
+  return regions;
+}
+
+module.exports = getRegions();
