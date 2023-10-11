@@ -87,7 +87,7 @@ router.get("/", async (req, res) => {
 
   try {
     relatedKeywords = await getRelatedQueries(keyword, geoLocation, start);
-    await new Promise((r) => setTimeout(r, 2000)); // call related topics after 2 seconds
+    await new Promise((r) => setTimeout(r, 1000)); // call related topics after 1 seconds
     relatedTopics = await getRelatedTopics(keyword, geoLocation, start);
 
     res.render("explore", {
