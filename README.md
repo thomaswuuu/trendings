@@ -17,13 +17,14 @@ $ npm start
 # Completion
 The following is the results of this app.
 ## List the trendings searches
-![](https://hackmd.io/_uploads/SJyNu9m-a.png)
+<img src="https://github.com/thomaswuuu/trendings/assets/5268096/464eef85-5704-4d43-a779-8a14fa52fe79" />
+
 ## Click to show the related news
-![](https://hackmd.io/_uploads/SylTuc7b6.png)
+<img src="https://github.com/thomaswuuu/trendings/assets/5268096/1e5631ae-c4d0-42d1-a3ea-f755b92ddac3"/>
+
 ## Keyword Explore
 This function will show related searches and topics.
-
-![](https://hackmd.io/_uploads/Hkayj5m-p.png)
+<img src="https://github.com/thomaswuuu/trendings/assets/5268096/f67a78df-c9c5-421c-b383-6a9926ab32e1"/>
 
 
 This project is for practicing node route, pre-processing data from API, and rendering processed data to views.
