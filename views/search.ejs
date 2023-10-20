@@ -1,0 +1,28 @@
+<% layout("layout/layout") %>
+<div id="results" class="results">
+  <% if(contents.length == 0) {%>
+  <div class="searches phase2">
+    <h4>沒有搜尋到任何相關資料</h4>
+  </div>
+  <% }else{ contents.forEach((content) => { %>
+  <div class="searches phase2">
+    <h4>
+      <a href="<%= content.link %>" target="_blank"><%- content.title %></a>
+    </h4>
+    <p class="website"><%- content.url %></p>
+    <div class="box">
+      <h5><%- content.snippet %></h5>
+      <a href="<%= content.link %>" target="_blank">
+        <img class="image" src="<%= content.image %>"
+      /></a>
+    </div>
+  </div>
+  <% }); }%>
+</div>
+<div>
+  <p class="load"><a>more results</a></p>
+</div>
+<div>
+  <p><a href="/trends?geo=<%= geoLocation %>">back to home</a></p>
+</div>
+<script type="text/javascript" src="../javascripts/search.js"></script>

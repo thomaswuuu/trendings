@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../stylesheets/trends.css" />
     <link rel="stylesheet" href="../stylesheets/loader.css" />
     <link rel="stylesheet" href="../stylesheets/explore.css" />
+    <link rel="stylesheet" href="../stylesheets/search.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Trendings</title>
@@ -45,10 +46,10 @@
             <form class="navbar-form navbar-left">
               <div class="form-group">
                 <input
-                  id="explore"
+                  id="search"
                   type="text"
                   class="form-control"
-                  placeholder="關鍵字探索"
+                  placeholder="關鍵字搜尋"
                   style="font-size: 16px"
                 />
               </div>
@@ -59,7 +60,7 @@
     </header>
     <main>
       <%- body %>
-      <script type="text/javascript" src="../javascripts/explore.js"></script>
+      <script type="text/javascript" src="../javascripts/global.js"></script>
     </main>
   </body>
 </html>
