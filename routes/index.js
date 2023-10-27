@@ -22,7 +22,6 @@ function getDailyTrend(selectedDate, geoLocation) {
               element.trendingSearches.forEach((content, index) => {
                 let query = content.title.query;
                 let traffic = content.formattedTraffic;
-                let newsImage = content.image.imageUrl || "";
                 let articles = content.articles;
                 // Change traffic string to corresponding value
                 // 1K+ -> 1000+ , 10K+ -> 1萬+, 100K+ -> 10萬+
@@ -42,7 +41,6 @@ function getDailyTrend(selectedDate, geoLocation) {
                   index: index + 1,
                   query: query,
                   traffic: traffic,
-                  image: newsImage,
                   articles: articles,
                 });
               });

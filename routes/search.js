@@ -29,17 +29,11 @@ router.get("/", async (req, res) => {
         const link = item.link;
         const snippet = item.htmlSnippet;
         const formattedUrl = item.htmlFormattedUrl;
-        const pagemap = item.pagemap;
-        const image =
-          Boolean(pagemap) && Boolean(pagemap.cse_thumbnail)
-            ? pagemap.cse_thumbnail[0].src
-            : "";
         contents.push({
           title: title,
           link: link,
           snippet: snippet,
           url: formattedUrl,
-          image: image,
         });
       });
     }
@@ -71,17 +65,11 @@ router.get("/:index", async (req, res) => {
         const link = item.link;
         const snippet = item.htmlSnippet;
         const formattedUrl = item.htmlFormattedUrl;
-        const pagemap = item.pagemap;
-        const image =
-          Boolean(pagemap) && Boolean(pagemap.cse_thumbnail)
-            ? pagemap.cse_thumbnail[0].src
-            : "";
         contents.push({
           title: title,
           link: link,
           snippet: snippet,
           url: formattedUrl,
-          image: image,
         });
       });
     }
