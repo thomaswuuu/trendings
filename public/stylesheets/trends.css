@@ -172,7 +172,7 @@ main .news table tr td {
   padding: 0.5vh 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .navbar-header i {
     margin-left: 10px;
   }
