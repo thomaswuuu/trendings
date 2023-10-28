@@ -15,9 +15,6 @@ load.addEventListener("click", async (e) => {
                               <p class="website">${content.url}</p>
                               <div class="box">
                                 <h5>${content.snippet}</h5>
-                                <a href="${content.link}" target="_blank">
-                                  <img class="image" src="${content.image}" />
-                                </a>
                               </div>
                             </div>`;
     });
