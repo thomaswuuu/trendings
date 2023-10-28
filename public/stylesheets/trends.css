@@ -172,8 +172,8 @@ main .news table tr td {
   padding: 0.5vh 0;
 }
 
-@media screen and (max-width: 540px) {
-  .navbar-header img {
+@media screen and (max-width: 760px) {
+  .navbar-header i {
     margin-left: 10px;
   }
   main .news tr {
