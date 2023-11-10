@@ -1,0 +1,12 @@
+version: "3"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    environment:
+      # Google Custom Search API and ENGINE key
+      API_KEY: ${API_KEY}
+      ENGINE_ID: ${ENGINE_ID}
+    ports:
+      - "3000:3000"
