@@ -7,7 +7,7 @@ require("dotenv").config();
 function getSearchResults(keyword, geoLocation, startIndex) {
   const apiKey = process.env.API_KEY;
   const engineId = process.env.ENGINE_ID;
-  const params = `q=${keyword}&start=${startIndex}&gl=${geoLocation}&key=${apiKey}&cx=${engineId}&sort=date&dateRestrict=d30`;
+  const params = `q=${keyword}&start=${startIndex}&gl=${geoLocation}&key=${apiKey}&cx=${engineId}&sort=date&dateRestrict=d30&hl=zh-TW`;
   const url = `https://www.googleapis.com/customsearch/v1?${params}`;
   return axios.get(url);
 }
