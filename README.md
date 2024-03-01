@@ -15,9 +15,14 @@ You can use "npm start" to run this app.
 ```
 $ npm start
 ```
+Or runnning on doker container：
+```
+$ docker-compose -f docker-compose-dev.yml up -d
+```
 # Completion
 The following is the results of this app.
 ## List the trendings searches
+
 <img src="https://github.com/thomaswuuu/trendings/assets/5268096/0fc5aadb-d224-4c1e-8fd8-2c80523768fe" width="720" />
 
 ## Click to show the related news
@@ -25,10 +30,9 @@ The following is the results of this app.
 
 ## Keyword Searches
 This function will show related searches.
+
 <img src="https://github.com/thomaswuuu/trendings/assets/5268096/815741b1-669f-4424-bfc4-4e1ba9b58be9" width="720" >
 
 
-
 This project is for practicing node route, pre-processing data from API, and rendering processed data to views. 
-
 Thank you for your patience to read this manual.
